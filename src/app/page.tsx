@@ -1,9 +1,10 @@
 import { PokemonCard } from '@/components/PokemonCard';
-import { PokemongGrid } from '@/components/PokemonGrid';
-import Image from 'next/image';
+import { PokemonGrid } from '@/components/PokemonGrid';
+import { getPokemonList } from '@/lib/pokemonAPI';
 
-export default function Home() {
+export default async function Home() {
+  const pokemonList = await getPokemonList()
   return (
-    <PokemongGrid/>
+    <PokemonGrid pokemonList={pokemonList}/>
   );
 }

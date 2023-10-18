@@ -4,9 +4,22 @@ import { useState } from 'react';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { PokemonCard } from './PokemonCard';
+import { Pokemon } from '@/lib/pokemonAPI';
 
-export function PokemongGrid() {
+interface PokemonGridProps {
+  pokemonList: Pokemon[];
+}
+
+export function PokemonGrid({ pokemonList }: PokemonGridProps) {
   const [searchText, setSearchText] = useState('');
+
+  const searchFilter = (pokemonList: Pokemon[]) => {
+    return pokemonList.filter(pokemon =>
+      pokemon.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+  };
+
+  const filteredPokemonList = searchFilter(pokemonList);
 
   return (
     <>
@@ -22,12 +35,15 @@ export function PokemongGrid() {
             onChange={e => setSearchText(e.target.value)}
           />
         </div>
-        <h3 className='text-3xl pt-12 pb-6 text-center'>Pokemon Collection</h3>
+        <h3 className="text-3xl pt-12 pb-6 text-center">Pokemon Collection</h3>
       </div>
       <div className="mb-32 grid text-center lg:max-w-5xl lg:mb-0 lg:grid-cols-3 lg:text-left">
-        <PokemonCard name='pikachu'/>
-        <PokemonCard name='pikachu'/>
-        <PokemonCard name='pikachu'/>
+        {filteredPokemonList.map((pokemon, idx) => (
+          <PokemonCard
+            name={pokemon.name}
+            key={idx}
+          />
+        ))}
       </div>
     </>
   );
