@@ -3,6 +3,25 @@ export type Pokemon = {
   name: string;
   url: string;
 };
+
+export type PokemonInfo = {
+  sprites: {
+    other: {
+      'official-artwork': {
+        front_default: string;
+      };
+    };
+  };
+  stats: {
+    base_stat: number;
+    effort: number;
+    stat: {
+      name: string;
+      url: string;
+    };
+  }[];
+  weight: number;
+};
 // get Pokemon List
 
 export async function getPokemonList(): Promise<Pokemon[]> {
@@ -12,9 +31,9 @@ export async function getPokemonList(): Promise<Pokemon[]> {
   return data.results;
 }
 
-// get Pokemon
+// get PokemonInfo
 
-export async function getPokemon(name: string) {
+export async function getPokemon(name: string): Promise<PokemonInfo> {
   const res = await fetch(POKEMON_API + `pokemon/${name}`);
   const data = await res.json();
 
