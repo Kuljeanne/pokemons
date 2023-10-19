@@ -36,3 +36,5 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## Deploy on Vercel
 
+[vercel-deploy-link](https://pokemon-finder-l65ksp6ug-kuljeannes-projects.vercel.app/pikachu)
+
