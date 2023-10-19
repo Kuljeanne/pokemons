@@ -11,8 +11,6 @@ export default async function PokemonPage({
 
   const pokemonObj = await getPokemon(pokemonName);
 
-  console.log(pokemonObj);
-
   return (
     <>
       <h1 className="text-4xl text-bold pt-4">
