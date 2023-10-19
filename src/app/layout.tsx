@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Link from 'next/link';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
               <Link href="/">
                 <h2 className="text-2xl text-bold">PokemonsFinder</h2>
               </Link>
+              <ThemeToggle/>
             </div>
             {children}
           </main>
